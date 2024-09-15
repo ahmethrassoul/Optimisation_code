@@ -1,20 +1,24 @@
 default: libstat.so
 
+CC = gcc
+CFLAGS = -Wall -ansi -pedantic
+
+
 libstat.so: mean.o variance.o 
-	gcc -shared $^ -o $@ -lm
+	$(CC) -shared $^ -o $@ -lm
 
 #
 # À compléter ...
 #
 
 %.o: %.c
-	gcc -Wall -fPIC -c -o $@ $<
+	$(CC) -Wall -fPIC -shared -c -o $@ $<
 
 mean.o: mean.c mean.h
-	gcc -c -Wall  $< -o mean.o
+#	$(CC) -c -Wall  $< -o mean.o
 
 variance.o: variance.c variance.h
-	gcc -c -Wall $< -o variance.o
+#	$(CC) -c -Wall $< -o variance.o
 
 clean:
 	rm *.o libstat.so
