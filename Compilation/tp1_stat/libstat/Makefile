@@ -12,7 +12,7 @@ libstat.so: mean.o variance.o
 #
 
 %.o: %.c
-	$(CC) -Wall -fPIC -c -o $@ $<
+	$(CC) -Wall -fPIC -shared -c -o $@ $<
 
 mean.o: mean.c mean.h
 #	$(CC) -c -Wall  $< -o mean.o
